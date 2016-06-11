@@ -43,7 +43,7 @@
   register: zabbixDatabaseTebles
   changed_when: False
 - shell: zcat /usr/share/doc/zabbix-server-mysql-*/create.sql.gz | mysql -u{{ DBUser }} -p{{ DBPassword }} {{ DBName }}
-  when: zabbixDatabaseTebles|int == 0
+  when: zabbixDatabaseTebles.stdout == 0
 
 # Setting zabbix_server.conf
 - name: Setting zabbix_server.conf
