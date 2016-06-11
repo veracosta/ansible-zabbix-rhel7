@@ -1,0 +1,7 @@
+---
+# This playbook deploys the ZABBIX agent. 
+- hosts: zabbix-agent-linux
+  become: yes
+
+  roles:
+    - zabbix-agent-linux
