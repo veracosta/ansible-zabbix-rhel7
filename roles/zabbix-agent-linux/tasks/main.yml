@@ -15,7 +15,7 @@
 - name: Import a key from a file
   rpm_key: state=present key=/tmp/RPM-GPG-KEY-ZABBIX
 
-- name: Install zabbix-server
+- name: Install zabbix-agent
   yum: name=zabbix-agent enablerepo=zabbix state=latest disable_gpg_check=no
 
 - name: disabled zabbix repository
@@ -41,6 +41,9 @@
     - regexp: '^ServerActive='
       insertafter: "^# ServerActive="
       line: 'ServerActive={{ ServerActive }}'
+    - regexp: '^Hostname='
+      insertafter: "^# Hostname="
+      line: 'Hostname={{ Hostname }}'
 
 - name: start zabbix-agent
   service: name=zabbix-agent state=started enabled=yes
