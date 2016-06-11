@@ -23,7 +23,7 @@
 
 - name: Register hostname
   command: /bin/uname -n
-  register: {{ Hostname }}
+  register: Hostname
 
 # Setting zabbix_agentd.conf
 - name: Setting zabbix_agentd.conf
