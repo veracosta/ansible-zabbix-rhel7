@@ -21,6 +21,10 @@
 - name: disabled zabbix repository
   lineinfile: dest=/etc/yum.repos.d/zabbix.repo regexp='^enabled' line="enabled=0"
 
+- name: Register hostname
+  command: /bin/uname -n
+  register: {{ Hostname }}
+
 # Setting zabbix_agentd.conf
 - name: Setting zabbix_agentd.conf
   lineinfile: >-
